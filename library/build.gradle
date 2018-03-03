@@ -77,5 +77,7 @@ dependencies {
     testImplementation "org.robolectric:shadows-support-v4:$shadowSupportLib4"
     testImplementation "android.arch.lifecycle:extensions:$live"
     testImplementation "android.arch.lifecycle:common-java8:$live"
+
+    implementation "com.android.support.constraint:constraint-layout:$constraint"
 }
 
