@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="emailbtn">
+        <attr name="textColorEmailClientAvailable" format="color"/>
+        <attr name="textColorEmailClientUnavailable" format="color"/>
+    </declare-styleable>
+</resources>

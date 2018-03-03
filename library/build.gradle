@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+
+    lintOptions {
+        htmlReport false
+        abortOnError false
+    }
+
+    testOptions { // <-- You need this
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+
+        unitTests.all {
+            // All the usual Gradle options.
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen { false }
+                showStandardStreams = true
+            }
+            reports.html.enabled = true
+            reports.junitXml.enabled = true
+            maxParallelForks = 5
+            forkEvery = 200
+        }
+
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:$supportLib7"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.robolectric:multidex:$robolectricMultidex"
+    testImplementation "io.kotlintest:kotlintest:$kotlintest"
+    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "org.robolectric:shadows-support-v4:$shadowSupportLib4"
+    testImplementation "android.arch.lifecycle:extensions:$live"
+    testImplementation "android.arch.lifecycle:common-java8:$live"
+}
+
