@@ -1,4 +1,5 @@
 <resources>
+    <string name="invalid_email">Wrong format E-Mail</string>
     <string name="no_email_app_title">E-Mail Unavailable</string>
     <string name="no_email_app_content">Please download an E-Mail client.</string>
     <string name="fav_email_client">com.google.android.apps.inbox</string>

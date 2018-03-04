@@ -8,9 +8,11 @@ import android.os.Build
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.res.ResourcesCompat.getColor
 import android.util.AttributeSet
+import android.util.Patterns.EMAIL_ADDRESS
 import android.widget.TextView
 
 class EmailButton : TextView {
+    private var isValidated = true
 
     constructor(context: Context) : super(context) {
         init()
@@ -37,6 +39,34 @@ class EmailButton : TextView {
         defStyleRes
     ) {
         init(attrs)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        validateText(text)
+    }
+
+    override fun onTextChanged(
+        text: CharSequence?,
+        start: Int,
+        lengthBefore: Int,
+        lengthAfter: Int
+    ) {
+        super.onTextChanged(text, start, lengthBefore, lengthAfter)
+        validateText(text)
+    }
+
+    private fun validateText(text: CharSequence?) {
+        if (isValidated && !EMAIL_ADDRESS.matcher(text).matches()) {
+            isValidated = false
+            this.text = context.getString(R.string.invalid_email)
+            isClickable = false
+            isEnabled = false
+        } else if (!isValidated && EMAIL_ADDRESS.matcher(text).matches()) {
+            isValidated = true
+            isClickable = true
+            isEnabled = true
+        }
     }
 
     private fun init(attrs: AttributeSet? = null) {
