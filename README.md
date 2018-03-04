@@ -1,4 +1,7 @@
 # email-button
+
+[![Build Status](https://travis-ci.org/XinyueZ/email-button.svg?branch=master)](https://travis-ci.org/XinyueZ/email-button)
+
 A email-client sensitive button. 
 
 # work
