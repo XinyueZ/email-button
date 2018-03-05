@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.support.annotation.ColorInt
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.res.ResourcesCompat.getColor
 import android.util.AttributeSet
@@ -72,62 +73,55 @@ class EmailButton : TextView {
     private fun init(attrs: AttributeSet? = null) {
         if (attrs != null) {
             with(context.theme.obtainStyledAttributes(attrs, R.styleable.emailbtn, 0, 0)) {
-                findEmailClient().apply {
-                    isClickable = this
-                    isEnabled = this
-                    if (this) {
-                        setOnClickListener {
-                            EmailClientPicker().show(
-                                context as FragmentActivity,
-                                text.toString()
-                            )
-                        }
-                        setTextColor(
-                            getColor(
-                                resources,
-                                getResourceId(
-                                    R.styleable.emailbtn_textColorEmailClientAvailable,
-                                    R.color.selector_email_text_default_color
-                                ),
-                                null
-                            )
-                        )
-                    } else {
-                        setTextColor(
-                            getColor(
-                                resources,
-                                getResourceId(
-                                    R.styleable.emailbtn_textColorEmailClientUnavailable,
-                                    android.R.color.black
-                                ),
-                                null
-                            )
-                        )
-                    }
-                }
+                process(
+                    getColor(
+                        resources,
+                        getResourceId(
+                            R.styleable.emailbtn_textColorEmailClientAvailable,
+                            R.color.selector_email_text_default_color
+                        ),
+                        null
+                    ), getColor(
+                        resources,
+                        getResourceId(
+                            R.styleable.emailbtn_textColorEmailClientUnavailable,
+                            android.R.color.black
+                        ),
+                        null
+                    )
+                )
                 recycle()
             }
         } else {
-            findEmailClient().apply {
-                isClickable = this
-                isEnabled = this
-                if (this) {
-                    setOnClickListener {
-                        EmailClientPicker().show(
-                            context as FragmentActivity,
-                            text.toString()
-                        )
-                    }
-                    setTextColor(
-                        getColor(
-                            resources,
-                            R.color.selector_email_text_default_color,
-                            null
-                        )
+            process(
+                getColor(
+                    resources,
+                    R.color.selector_email_text_default_color,
+                    null
+                ),
+                getColor(resources, android.R.color.black, null)
+            )
+        }
+    }
+
+    private fun process(@ColorInt textColorAvailable: Int, @ColorInt textColorUnavailable: Int) {
+        findEmailClient().apply {
+            isClickable = this
+            isEnabled = this
+            if (this) {
+                setOnClickListener {
+                    EmailClientPicker().show(
+                        context as FragmentActivity,
+                        text.toString()
                     )
-                } else {
-                    setTextColor(getColor(resources, android.R.color.black, null))
                 }
+                setTextColor(
+                    textColorAvailable
+                )
+            } else {
+                setTextColor(
+                    textColorUnavailable
+                )
             }
         }
     }
