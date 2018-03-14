@@ -14,10 +14,10 @@ class ShadowEmailClientPicker {
     var noClientInstalled = true
 
     @Implementation
-    fun emailValid(mailto: String): String? = shadowEmailValid
+    fun emailValid(@Suppress("UNUSED_PARAMETER") mailto: String): String? = shadowEmailValid
 
     @Implementation
-    private fun startEmailClient(activity: Activity, to: String) {
+    private fun startEmailClient(@Suppress("UNUSED_PARAMETER") activity: Activity, @Suppress("UNUSED_PARAMETER") to: String) {
         if (noClientInstalled) throw ActivityNotFoundException()
     }
 }
