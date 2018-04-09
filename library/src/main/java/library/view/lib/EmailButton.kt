@@ -1,18 +1,16 @@
 package library.view.lib
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.support.annotation.ColorInt
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.res.ResourcesCompat.getColor
+import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.util.Patterns.EMAIL_ADDRESS
-import android.widget.TextView
 
-class EmailButton : TextView {
+class EmailButton : AppCompatTextView {
     private var isValidated = true
 
     constructor(context: Context) : super(context) {
@@ -27,17 +25,6 @@ class EmailButton : TextView {
         context,
         attrs,
         defStyleAttr
-    ) {
-        init(attrs)
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @Suppress("unused")
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
-        context,
-        attrs,
-        defStyleAttr,
-        defStyleRes
     ) {
         init(attrs)
     }
