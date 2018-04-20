@@ -13,7 +13,7 @@ import org.hamcrest.CoreMatchers.`is` as matchIs
 import org.mockito.Mockito.`when` as mockWhen
 
 @RunWith(RobolectricTestRunner::class)
-@Config(shadows = [ShadowEmailButton::class])
+@Config(shadows = [ShadowEmailButton::class], sdk = [27])
 class EmailButtonUnitTest {
     @Test
     fun shouldShowInvalidEmailMessage() {

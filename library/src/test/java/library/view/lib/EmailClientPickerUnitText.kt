@@ -15,7 +15,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowDatePickerDialog
 
 @RunWith(RobolectricTestRunner::class)
-@Config(shadows = [ShadowEmailClientPicker::class])
+@Config(shadows = [ShadowEmailClientPicker::class], sdk = [27])
 class EmailClientPickerUnitText {
     private lateinit var picker: EmailClientPicker
     private lateinit var activityCtrl: ActivityController<FragmentActivity>
