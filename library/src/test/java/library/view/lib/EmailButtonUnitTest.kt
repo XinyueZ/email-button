@@ -9,11 +9,9 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import org.hamcrest.CoreMatchers.`is` as matchIs
-import org.mockito.Mockito.`when` as mockWhen
 
 @RunWith(RobolectricTestRunner::class)
-@Config(shadows = [ShadowEmailButton::class], sdk = [27])
+@Config(shadows = [ShadowEmailButton::class])
 class EmailButtonUnitTest {
     @Test
     fun shouldShowInvalidEmailMessage() {
