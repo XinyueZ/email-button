@@ -15,7 +15,6 @@ class ShadowEmailButton : ShadowTextView() {
     fun findEmailClient() = shadowFindEmailClient
 }
 
-
 fun shadowOf(real: EmailButton): ShadowEmailButton =
     Shadow.extract<ShadowEmailButton>(
         real

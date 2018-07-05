@@ -7,7 +7,6 @@ import org.robolectric.android.controller.ActivityController
 
 fun context(): Application = RuntimeEnvironment.application
 
-
 fun <T : Activity> ActivityController<T>.finish() {
     try {
         pause().stop().destroy()

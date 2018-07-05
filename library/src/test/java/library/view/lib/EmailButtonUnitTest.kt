@@ -22,12 +22,10 @@ class EmailButtonUnitTest {
         emailButton.isClickable.shouldBe(false)
         emailButton.isEnabled.shouldBe(false)
 
-
         emailButton.text = "zxy@gmail.com"
         emailButton.text.shouldBe("zxy@gmail.com")
         emailButton.isClickable.shouldBe(true)
         emailButton.isEnabled.shouldBe(true)
-
 
         emailButton.text = Gen.string().generate()
         emailButton.text.shouldBe(context().getString(R.string.invalid_email))
