@@ -3,4 +3,6 @@
     <string name="no_email_app_title">E-Mail Unavailable</string>
     <string name="no_email_app_content">Please download an E-Mail client.</string>
     <string name="fav_email_client">com.google.android.apps.inbox</string>
+    <string name="dummy_random_text">asfasfasdfasdf</string>
+    <string name="dummy_email">dev.xinyue.zhao@gmail.com</string>
 </resources>

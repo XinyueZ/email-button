@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EmailButton sample</string>
+    <string name="dummy_email">dev.xinyue.zhao@gmail.com</string>
 </resources>
