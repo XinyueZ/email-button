@@ -1,10 +1,15 @@
 # email-button
 
 [![Build Status](https://travis-ci.org/XinyueZ/email-button.svg?branch=master)](https://travis-ci.org/XinyueZ/email-button)
+[ ![Download](https://api.bintray.com/packages/devxinyuezhao/EmailButton/emailbutton/images/download.svg) ](https://bintray.com/devxinyuezhao/EmailButton/emailbutton/_latestVersion)
 
 A email-client sensitive button. 
 
-# work
+```groovy
+  implementation "com.github.xinyuez:emailbutton:z.x.y"
+```
+
+# Work
 
 - A button to open system-picker of email.
 - If no picker would be found the button should not be clickable.
