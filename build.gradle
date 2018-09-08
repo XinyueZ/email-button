@@ -25,6 +25,22 @@ buildscript {
         ktlintVersion = '0.24.0'
 
         bintray = "1.8.4"
+
+        projectName = 'EmailButton'
+        projectDesc = 'A button for showing Email-address and opening client apps'
+
+        githubUrl = 'https://github.com/XinyueZ/email-button'
+
+        mavenGroup = 'com.github.xinyuez'
+        mavenArtifactId = 'emailbutton'
+        mavenVersion = versionName
+
+        bintrayOrg = 'devxinyuezhao'
+
+        prj_license = "MIT"
+        prj_license_url = "https://github.com/XinyueZ/email-button#license"
+
+        update_year = "2018"
     }
 
     repositories {
@@ -36,9 +52,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintray"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 

@@ -16,7 +16,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-
+        archivesBaseName = mavenArtifactId
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -91,8 +91,11 @@ dependencies {
     testImplementation "android.arch.lifecycle:common-java8:$live"
 }
 
+
 kapt {
     useBuildCache = true
 }
+
+apply from: 'bintray.gradle'
 
 
