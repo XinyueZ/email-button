@@ -9,11 +9,12 @@ buildscript {
         compileSdkVersion = 28
         minSdkVersion = 15
         targetSdkVersion = 28
-        versionName = "1.0.1"
+        versionName = "1.0.2"
         versionCode = 1
         constraint = "1+"
         supportLib4 = "28+"
         supportLib7 = "28+"
+        design = "28+"
         live = "1.1.0"
 
         junit = "4.12"
