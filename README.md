@@ -6,7 +6,7 @@
 A email-client sensitive button. 
 
 ```groovy
-  implementation "com.github.xinyuez:emailbutton:z.x.y"
+  implementation "com.github.xinyuez:emailbutton:z.x.y@aar"
 ```
 
 # Work
