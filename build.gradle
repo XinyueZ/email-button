@@ -9,7 +9,7 @@ buildscript {
         compileSdkVersion = 28
         minSdkVersion = 15
         targetSdkVersion = 28
-        versionName = "1.0.0"
+        versionName = "1.0.1"
         versionCode = 1
         constraint = "1+"
         supportLib4 = "28+"
@@ -44,9 +44,9 @@ buildscript {
     }
 
     repositories {
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        google()
         jcenter()
+        google()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
@@ -61,9 +61,9 @@ plugins {
 
 allprojects {
     repositories {
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        google()
         jcenter()
+        google()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
 }
 
