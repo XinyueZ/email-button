@@ -40,10 +40,10 @@ android {
 }
 
 dependencies {
-    implementation project(':library')
+    //implementation project(':library')
     implementation "com.android.support:design:${design}"
     implementation "com.android.support.constraint:constraint-layout:$constraint"
-    //implementation "com.github.xinyuez:emailbutton:${mavenVersion}@aar"
+    implementation "com.github.xinyuez:emailbutton:${mavenVersion}@aar"
 }
 
 kapt {
