@@ -8,14 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AlertDialog.Builder
-import android.support.v7.app.AppCompatDialogFragment
 import android.util.Patterns.EMAIL_ADDRESS
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 
 /**
  * Start a picker-list for email clients. It dependents on different OS, however, it tries to give user
@@ -107,44 +107,42 @@ internal class EmailClientPicker {
     class TryInStoreDownloadFragment : AppCompatDialogFragment() {
 
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
-            Builder(activity!!).run {
+            AlertDialog.Builder(activity!!).run {
                 setTitle(R.string.no_email_app_title)
                     .setMessage(R.string.no_email_app_content)
                     .setPositiveButton(
-                        android.R.string.ok,
-                        { _, _ ->
-                            val mailClient = getString(R.string.fav_email_client)
+                        android.R.string.ok
+                    ) { _, _ ->
+                        val mailClient = getString(R.string.fav_email_client)
+                        try {
+                            startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse(APP_STORE_LINK + mailClient)
+                                )
+                            )
+                        } catch (ex: ActivityNotFoundException) {
                             try {
                                 startActivity(
                                     Intent(
                                         Intent.ACTION_VIEW,
-                                        Uri.parse(APP_STORE_LINK + mailClient)
+                                        Uri.parse(APP_STORE_WEB_LINK + mailClient)
                                     )
                                 )
                             } catch (ex: ActivityNotFoundException) {
-                                try {
-                                    startActivity(
-                                        Intent(
-                                            Intent.ACTION_VIEW,
-                                            Uri.parse(APP_STORE_WEB_LINK + mailClient)
-                                        )
-                                    )
-                                } catch (ex: ActivityNotFoundException) {
-                                    Toast.makeText(
-                                        context,
-                                        R.string.no_email_app_title,
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }
+                                Toast.makeText(
+                                    context,
+                                    R.string.no_email_app_title,
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
-                    )
+                    }
                     .setNegativeButton(
-                        android.R.string.cancel,
-                        { _, _ ->
-                            // User cancelled the dialog
-                        }
-                    )
+                        android.R.string.cancel
+                    ) { _, _ ->
+                        // User cancelled the dialog
+                    }
                 // Create the AlertDialog object and return it
                 create()
             }

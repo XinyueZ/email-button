@@ -1,6 +1,6 @@
 package library.view.lib
 
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import io.kotlintest.matchers.should
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.properties.Gen

@@ -3,12 +3,12 @@ package library.view.lib
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.support.annotation.ColorInt
-import android.support.v4.app.FragmentActivity
-import android.support.v4.content.res.ResourcesCompat.getColor
-import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.util.Patterns.EMAIL_ADDRESS
+import androidx.annotation.ColorInt
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.FragmentActivity
 
 class EmailButton : AppCompatTextView {
     private var isValidated = true
@@ -61,14 +61,14 @@ class EmailButton : AppCompatTextView {
         if (attrs != null) {
             with(context.theme.obtainStyledAttributes(attrs, R.styleable.emailbtn, 0, 0)) {
                 process(
-                    getColor(
+                    ResourcesCompat.getColor(
                         resources,
                         getResourceId(
                             R.styleable.emailbtn_textColorEmailClientAvailable,
                             R.color.selector_email_text_default_color
                         ),
                         null
-                    ), getColor(
+                    ), ResourcesCompat.getColor(
                         resources,
                         getResourceId(
                             R.styleable.emailbtn_textColorEmailClientUnavailable,
@@ -81,12 +81,12 @@ class EmailButton : AppCompatTextView {
             }
         } else {
             process(
-                getColor(
+                ResourcesCompat.getColor(
                     resources,
                     R.color.selector_email_text_default_color,
                     null
                 ),
-                getColor(resources, android.R.color.black, null)
+                ResourcesCompat.getColor(resources, android.R.color.black, null)
             )
         }
     }
